@@ -1,9 +1,187 @@
-<!doctype html>
-<html>
-  <head>
-    <title>This is the title of the webpage!</title>
-  </head>
-  <body>
-    <p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
-  </body>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رزومه شخصی</title>
+  <style>
+    body {
+      font-family: 'Vazirmatn', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .header {
+      text-align: center;
+      padding: 20px 0;
+      border-bottom: 2px solid #007bff;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #007bff;
+    }
+    .header p {
+      margin: 5px 0;
+      color: #555;
+    }
+    .section {
+      margin: 20px 0;
+    }
+    .section h2 {
+      font-size: 1.8em;
+      color: #007bff;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+    .section ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .section ul li {
+      margin: 10px 0;
+    }
+    .section ul li strong {
+      color: #333;
+    }
+    .skills ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .skills ul li {
+      background-color: #007bff;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.9em;
+    }
+    .contact-info {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .contact-info div {
+      flex: 1;
+      min-width: 200px;
+    }
+    @media (max-width: 600px) {
+      .container {
+        margin: 10px;
+        padding: 15px;
+      }
+      .header h1 {
+        font-size: 2em;
+      }
+      .section h2 {
+        font-size: 1.5em;
+      }
+      .contact-info {
+        flex-direction: column;
+      }
+    }
+    @font-face {
+      font-family: 'Vazirmatn';
+      src: url('https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>نام و نام خانوادگی</h1>
+      <p>توسعه‌دهنده وب | تهران، ایران</p>
+    </div>
+
+    <div class="section contact-info">
+      <div>
+        <p><strong>ایمیل:</strong> example@email.com</p>
+        <p><strong>تلفن:</strong> 0912-345-6789</p>
+      </div>
+      <div>
+        <p><strong>لینکدین:</strong> <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></p>
+        <p><strong>گیت‌هاب:</strong> <a href="https://github.com/yourusername">github.com/yourusername</a></p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>درباره من</h2>
+      <p>من یک توسعه‌دهنده وب با بیش از ۳ سال تجربه در طراحی و توسعه وب‌سایت‌های مدرن و کاربرپسند هستم. علاقه‌مند به یادگیری فناوری‌های جدید و حل مسائل پیچیده با رویکرد خلاقانه.</p>
+    </div>
+
+    <div class="section">
+      <h2>تحصیلات</h2>
+      <ul>
+        <li>
+          <strong>کارشناسی مهندسی نرم‌افزار</strong><br>
+          دانشگاه تهران، ۱۳۹۷ - ۱۴۰۱<br>
+          معدل: ۱۷.۵
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>تجربیات کاری</h2>
+      <ul>
+        <li>
+          <strong>توسعه‌دهنده فرانت‌اند</strong><br>
+          شرکت فناوری نوین، تهران | ۱۴۰۱ - اکنون<br>
+          - توسعه وب‌سایت‌های responsive با استفاده از HTML، CSS و JavaScript<br>
+          - همکاری با تیم طراحی برای بهبود تجربه کاربری<br>
+          - بهینه‌سازی عملکرد وب‌سایت‌ها
+        </li>
+        <li>
+          <strong>کارآموز توسعه وب</strong><br>
+          استارتاپ خلاق، تهران | ۱۴۰۰ - ۱۴۰۱<br>
+          - کمک به توسعه صفحات وب با فریم‌ورک React<br>
+          - یادگیری اصول توسعه تیمی و استفاده از Git
+        </li>
+      </ul>
+    </div>
+
+    <div class="section skills">
+      <h2>مهارت‌ها</h2>
+      <ul>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JavaScript</li>
+        <li>React.js</li>
+        <li>Node.js</li>
+        <li>Git</li>
+        <li>Bootstrap</li>
+        <li>Tailwind CSS</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>پروژه‌ها</h2>
+      <ul>
+        <li>
+          <strong>وب‌سایت فروشگاه آنلاین</strong><br>
+          - توسعه یک پلتفرم تجارت الکترونیک با React و Node.js<br>
+          - پیاده‌سازی سیستم پرداخت آنلاین<br>
+          - <a href="https://example.com">لینک پروژه</a>
+        </li>
+        <li>
+          <strong>اپلیکیشن مدیریت وظایف</strong><br>
+          - طراحی و توسعه اپلیکیشن وب با استفاده از JavaScript و Firebase<br>
+          - <a href="https://example.com">لینک پروژه</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
 </html>
