@@ -127,6 +127,7 @@
     .section:nth-child(3) { animation-delay: 0.6s; }
     .section:nth-child(4) { animation-delay: 0.8s; }
     .section:nth-child(5) { animation-delay: 1.0s; }
+    .section:nth-child(6) { animation-delay: 1.2s; }
     .section h2 {
       font-family: 'Poppins', sans-serif;
       font-size: 2.3em;
@@ -170,11 +171,32 @@
       left: 0;
       top: 5px;
     }
-    .section ul li ul {
-      padding-left: 20px;
-      list-style: none;
+    .experience ul li {
+      cursor: pointer;
     }
-    .section ul li ul li::before {
+    .experience ul li .toggle-icon {
+      position: absolute;
+      left: 10px;
+      top: 5px;
+      transition: transform 0.3s;
+    }
+    .experience ul li .toggle-icon.rotated {
+      transform: rotate(90deg);
+    }
+    .experience-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, padding 0.3s ease;
+      padding: 0 20px;
+    }
+    .experience-details.open {
+      max-height: 200px;
+      padding: 15px 20px;
+    }
+    .experience-details ul {
+      padding-left: 20px;
+    }
+    .experience-details ul li::before {
       content: '\f105';
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
@@ -243,6 +265,9 @@
         padding: 10px 25px;
         font-size: 0.95em;
       }
+      .experience-details.open {
+        max-height: 300px;
+      }
     }
   </style>
 </head>
@@ -275,17 +300,34 @@
       </ul>
     </div>
 
-    <div class="section">
+    <div class="section experience">
       <h2>Experience</h2>
       <ul>
-        <li>
+        <li onclick="toggleDetails('data-structures')">
+          <i class="fas fa-chevron-right toggle-icon"></i>
           <strong>Teaching Assistant</strong><br>
-          Hormozgan University, Bandar Abbas, Iran<br>
-          February 2025 - Present<br>
-          <ul>
-            <li>Assisted in <em>Data Structures and Algorithms</em> course, instructed by Dr. Shahram Golzari and Eng. Parisa Zarei.</li>
-            <li>Supported students in <em>Discrete Mathematics</em> course, instructed by Dr. Mahmoud Reza Saybani.</li>
-          </ul>
+          Data Structures and Algorithms, Hormozgan University, Bandar Abbas, Iran<br>
+          Instructed by Dr. Shahram Golzari and Eng. Parisa Zarei<br>
+          February 2025 - Present
+          <div id="data-structures" class="experience-details">
+            <ul>
+              <li>Designed and graded exercises to reinforce student understanding of algorithmic concepts.</li>
+              <li>Provided academic support to students, addressing coursework challenges and clarifying complex topics.</li>
+            </ul>
+          </div>
+        </li>
+        <li onclick="toggleDetails('discrete-math')">
+          <i class="fas fa-chevron-right toggle-icon"></i>
+          <strong>Teaching Assistant</strong><br>
+          Discrete Mathematics, Hormozgan University, Bandar Abbas, Iran<br>
+          Instructed by Dr. Mahmoud Reza Saybani<br>
+          February 2025 - Present
+          <div id="discrete-math" class="experience-details">
+            <ul>
+              <li>Designed and graded exercises to enhance student mastery of discrete mathematical concepts.</li>
+              <li>Conducted tutorials and provided one-on-one support to clarify complex topics and improve learning outcomes.</li>
+            </ul>
+          </div>
         </li>
       </ul>
     </div>
@@ -319,5 +361,14 @@
       <p>Artificial Intelligence in Healthcare, Machine Learning, Research and Development</p>
     </div>
   </div>
+
+  <script>
+    function toggleDetails(id) {
+      const details = document.getElementById(id);
+      const icon = details.previousElementSibling;
+      details.classList.toggle('open');
+      icon.classList.toggle('rotated');
+    }
+  </script>
 </body>
 </html>
