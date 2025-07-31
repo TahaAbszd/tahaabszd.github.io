@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personal Resume</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Taha Abbaszadeh - Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
@@ -14,9 +14,10 @@
     }
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #e0eafc, #cfdef3);
+      background: linear-gradient(135deg, #e6f0fa, #b3d4fc);
       color: #2c3e50;
       line-height: 1.8;
+      overflow-x: hidden;
     }
     .container {
       max-width: 1000px;
@@ -27,20 +28,22 @@
       overflow: hidden;
     }
     .header {
-      background: #2c3e50;
+      background: #1e3a8a;
       color: #fff;
       text-align: center;
-      padding: 50px 20px;
+      padding: 60px 20px;
       position: relative;
-    }
-    .header h1 {
-      font-size: 2.8em;
-      margin-bottom: 10px;
       animation: fadeIn 1s ease-in;
     }
+    .header h1 {
+      font-size: 3em;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
     .header p {
-      font-size: 1.2em;
-      opacity: 0.8;
+      font-size: 1.3em;
+      font-weight: 300;
+      opacity: 0.9;
     }
     .contact-info {
       display: flex;
@@ -50,96 +53,123 @@
       margin-top: 20px;
     }
     .contact-info a {
-      color: #fff;
+      color: #b3d4fc;
       text-decoration: none;
-      font-size: 1em;
-      transition: color 0.3s;
+      font-size: 1.1em;
+      transition: color 0.3s, transform 0.3s;
     }
     .contact-info a:hover {
-      color: #3498db;
+      color: #60a5fa;
+      transform: translateY(-2px);
     }
     .section {
-      padding: 40px 30px;
-      border-bottom: 1px solid #eee;
+      padding: 50px 40px;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideIn 0.8s ease-out forwards;
+      animation-delay: 0.2s;
     }
-    .section:last-child {
-      border-bottom: none;
-    }
+    .section:nth-child(2) { animation-delay: 0.4s; }
+    .section:nth-child(3) { animation-delay: 0.6s; }
+    .section:nth-child(4) { animation-delay: 0.8s; }
+    .section:nth-child(5) { animation-delay: 1s; }
     .section h2 {
-      font-size: 2em;
-      color: #3498db;
+      font-size: 2.2em;
+      font-weight: 600;
+      color: #1e3a8a;
       margin-bottom: 20px;
       position: relative;
     }
     .section h2::after {
       content: '';
-      width: 50px;
-      height: 3px;
-      background: #3498db;
+      width: 60px;
+      height: 4px;
+      background: #60a5fa;
       position: absolute;
-      bottom: -5px;
+      bottom: -8px;
       left: 0;
+    }
+    .section p, .section ul {
+      font-size: 1.1em;
+      color: #34495e;
     }
     .section ul {
       list-style: none;
+      padding-left: 0;
     }
     .section ul li {
-      margin-bottom: 20px;
-      padding-left: 20px;
+      margin-bottom: 15px;
+      padding-left: 25px;
       position: relative;
     }
     .section ul li::before {
-      content: '\f058';
+      content: '\f00c';
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
-      color: #3498db;
+      color: #60a5fa;
       position: absolute;
       left: 0;
+      top: 3px;
     }
     .skills ul {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
     }
     .skills ul li {
-      background: #3498db;
+      background: #60a5fa;
       color: #fff;
       padding: 8px 15px;
       border-radius: 20px;
-      font-size: 0.9em;
-      transition: transform 0.3s;
+      font-size: 0.95em;
+      font-weight: 500;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .skills ul li:hover {
-      transform: scale(1.1);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
-    .projects a {
-      color: #3498db;
+    .projects a, .languages a {
+      color: #60a5fa;
       text-decoration: none;
       font-weight: 600;
+      transition: color 0.3s;
     }
-    .projects a:hover {
+    .projects a:hover, .languages a:hover {
+      color: #1e3a8a;
       text-decoration: underline;
     }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(50px); }
       to { opacity: 1; transform: translateY(0); }
     }
     @media (max-width: 768px) {
       .container {
         margin: 20px;
       }
+      .header {
+        padding: 40px 15px;
+      }
       .header h1 {
         font-size: 2.2em;
       }
+      .header p {
+        font-size: 1.1em;
+      }
       .section {
-        padding: 20px;
+        padding: 30px 20px;
       }
       .section h2 {
-        font-size: 1.6em;
+        font-size: 1.8em;
       }
       .contact-info {
         flex-direction: column;
         align-items: center;
+        gap: 15px;
       }
     }
   </style>
@@ -147,47 +177,27 @@
 <body>
   <div class="container">
     <div class="header">
-      <h1>Your Name</h1>
-      <p>Web Developer | Tehran, Iran</p>
+      <h1>Taha Abbaszadeh</h1>
+      <p>Computer Engineering Student & AI/ML Researcher | Bandar Abbas, Iran</p>
       <div class="contact-info">
-        <a href="mailto:example@email.com"><i class="fas fa-envelope"></i> example@email.com</a>
-        <a href="tel:+989123456789"><i class="fas fa-phone"></i> +98 912 345 6789</a>
-        <a href="https://linkedin.com/in/yourprofile"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://github.com/yourusername"><i class="fab fa-github"></i> GitHub</a>
+        <a href="mailto:tahaabszdeh@gmail.com"><i class="fas fa-envelope"></i> tahaabszdeh@gmail.com</a>
+        <a href="https://www.linkedin.com/in/taha-abbaszadeh-951147360/"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/TahaAbszd"><i class="fab fa-github"></i> GitHub</a>
       </div>
     </div>
 
     <div class="section">
       <h2>About Me</h2>
-      <p>I'm a passionate web developer with over 3 years of experience in crafting modern, user-friendly websites. Skilled in creating responsive designs and solving complex problems with a creative approach. Always eager to learn new technologies and contribute to innovative projects.</p>
+      <p>I am a third-year Computer Engineering student at Hormozgan University, deeply passionate about AI and ML research, particularly in healthcare applications. With experience as a teaching assistant, I have honed my technical expertise while guiding others in their learning journeys. My goal is to innovate at the intersection of technology and healthcare to create impactful solutions.</p>
     </div>
 
     <div class="section">
       <h2>Education</h2>
       <ul>
         <li>
-          <strong>B.Sc. in Software Engineering</strong><br>
-          University of Tehran, 2018 - 2022<br>
-          GPA: 3.7/4.0
-        </li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>Work Experience</h2>
-      <ul>
-        <li>
-          <strong>Front-End Developer</strong><br>
-          Novin Tech Co., Tehran | 2022 - Present<br>
-          - Developed responsive websites using HTML, CSS, and JavaScript<br>
-          - Collaborated with UX designers to enhance user experience<br>
-          - Optimized web performance, improving load times by 30%
-        </li>
-        <li>
-          <strong>Web Development Intern</strong><br>
-          Creative Startup, Tehran | 2021 - 2022<br>
-          - Assisted in building web pages using React framework<br>
-          - Learned team collaboration and Git version control
+          <strong>B.Sc. in Computer Engineering</strong><br>
+          Hormozgan University, Bandar Abbas, Iran<br>
+          2023 - Present
         </li>
       </ul>
     </div>
@@ -195,14 +205,16 @@
     <div class="section skills">
       <h2>Skills</h2>
       <ul>
-        <li>HTML5</li>
-        <li>CSS3</li>
-        <li>JavaScript</li>
-        <li>React.js</li>
-        <li>Node.js</li>
-        <li>Git</li>
-        <li>Bootstrap</li>
-        <li>Tailwind CSS</li>
+        <li>Python</li>
+        <li>PyTorch</li>
+        <li>Pandas</li>
+        <li>Keras</li>
+        <li>NumPy</li>
+        <li>Django</li>
+        <li>API</li>
+        <li>Docker</li>
+        <li>Java</li>
+        <li>LaTeX</li>
       </ul>
     </div>
 
@@ -210,18 +222,29 @@
       <h2>Projects</h2>
       <ul>
         <li>
-          <strong>E-Commerce Website</strong><br>
-          - Built a fully functional online store using React and Node.js<br>
-          - Integrated secure payment gateways<br>
-          - <a href="https://example.com">View Project</a>
+          <strong>Snake AI</strong><br>
+          Developed a Snake Agent for an AI course project at Hormozgan University, designed to compete in a pre-built environment.<br>
+          <a href="https://github.com/TahaAbszd/AI-Course-Final-Project">View Project</a>
         </li>
         <li>
-          <strong>Task Management App</strong><br>
-          - Developed a web app using JavaScript and Firebase<br>
-          - Enabled real-time task updates and user authentication<br>
-          - <a href="https://example.com">View Project</a>
+          <strong>Tex-Templates</strong><br>
+          Created a collection of clean and reusable LaTeX templates for academic and professional Persian documents.<br>
+          <a href="https://github.com/TahaAbszd/Tex-Templates">View Project</a>
         </li>
       </ul>
+    </div>
+
+    <div class="section languages">
+      <h2>Languages</h2>
+      <ul>
+        <li>English (Fluent)</li>
+        <li>Persian (Native)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Interests</h2>
+      <p>Artificial Intelligence in Healthcare, Machine Learning, Research and Development</p>
     </div>
   </div>
 </body>
