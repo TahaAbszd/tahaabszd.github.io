@@ -126,6 +126,7 @@
     .section:nth-child(2) { animation-delay: 0.4s; }
     .section:nth-child(3) { animation-delay: 0.6s; }
     .section:nth-child(4) { animation-delay: 0.8s; }
+    .section:nth-child(5) { animation-delay: 1.0s; }
     .section h2 {
       font-family: 'Poppins', sans-serif;
       font-size: 2.3em;
@@ -168,6 +169,16 @@
       position: absolute;
       left: 0;
       top: 5px;
+    }
+    .section ul li ul {
+      padding-left: 20px;
+      list-style: none;
+    }
+    .section ul li ul li::before {
+      content: '\f105';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: #3b82f6;
     }
     .skills ul {
       display: flex;
@@ -260,6 +271,21 @@
           <strong>B.Sc. in Computer Engineering</strong><br>
           Hormozgan University, Bandar Abbas, Iran<br>
           2023 - Present
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Experience</h2>
+      <ul>
+        <li>
+          <strong>Teaching Assistant</strong><br>
+          Hormozgan University, Bandar Abbas, Iran<br>
+          February 2025 - Present<br>
+          <ul>
+            <li>Assisted in <em>Data Structures and Algorithms</em> course, instructed by Dr. Shahram Golzari and Eng. Parisa Zarei.</li>
+            <li>Supported students in <em>Discrete Mathematics</em> course, instructed by Dr. Mahmoud Reza Saybani.</li>
+          </ul>
         </li>
       </ul>
     </div>
