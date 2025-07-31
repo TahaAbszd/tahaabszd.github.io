@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Taha Abbaszadeh - Resume</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
@@ -13,163 +13,214 @@
       box-sizing: border-box;
     }
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #e6f0fa, #b3d4fc);
-      color: #2c3e50;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #dbeafe, #93c5fd);
+      color: #1e293b;
       line-height: 1.8;
       overflow-x: hidden;
     }
     .container {
-      max-width: 1000px;
-      margin: 40px auto;
+      max-width: 1100px;
+      margin: 50px auto;
       background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
       overflow: hidden;
     }
     .header {
-      background: #1e3a8a;
+      background: #1e40af;
       color: #fff;
       text-align: center;
-      padding: 60px 20px;
+      padding: 80px 20px;
       position: relative;
-      animation: fadeIn 1s ease-in;
+      overflow: hidden;
+      animation: fadeIn 1.2s ease-in;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%231e3a8a" fill-opacity="1" d="M0,128L48,144C96,160,192,192,288,186.7C384,181,480,139,576,122.7C672,107,768,117,864,138.7C960,160,1056,192,1152,197.3C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+      background-size: cover;
     }
     .header h1 {
-      font-size: 3em;
+      font-family: 'Poppins', sans-serif;
+      font-size: 3.2em;
       font-weight: 700;
       margin-bottom: 10px;
     }
     .header p {
-      font-size: 1.3em;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.4em;
       font-weight: 300;
       opacity: 0.9;
+      position: relative;
+      animation: underline 1.5s ease-in forwards;
+    }
+    .header p::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #93c5fd;
+      transform: translateX(-50%);
+      animation: grow 1.5s ease-in forwards;
+    }
+    @keyframes grow {
+      to { width: 100px; }
     }
     .contact-info {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 25px;
       flex-wrap: wrap;
-      margin-top: 20px;
+      margin-top: 25px;
     }
     .contact-info a {
-      color: #b3d4fc;
+      color: #dbeafe;
       text-decoration: none;
-      font-size: 1.1em;
+      font-size: 1.2em;
       transition: color 0.3s, transform 0.3s;
     }
     .contact-info a:hover {
-      color: #60a5fa;
-      transform: translateY(-2px);
+      color: #3b82f6;
+      transform: translateY(-3px);
+    }
+    .cta-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 30px;
+      background: #3b82f6;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 25px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .cta-button:hover {
+      background: #1e40af;
+      transform: scale(1.05);
     }
     .section {
-      padding: 50px 40px;
+      padding: 60px 50px;
       opacity: 0;
-      transform: translateY(50px);
+      transform: translateY(60px);
       animation: slideIn 0.8s ease-out forwards;
-      animation-delay: 0.2s;
     }
     .section:nth-child(2) { animation-delay: 0.4s; }
     .section:nth-child(3) { animation-delay: 0.6s; }
     .section:nth-child(4) { animation-delay: 0.8s; }
-    .section:nth-child(5) { animation-delay: 1s; }
     .section h2 {
-      font-size: 2.2em;
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.3em;
       font-weight: 600;
-      color: #1e3a8a;
-      margin-bottom: 20px;
+      color: #1e40af;
+      margin-bottom: 25px;
       position: relative;
     }
     .section h2::after {
       content: '';
-      width: 60px;
+      width: 70px;
       height: 4px;
-      background: #60a5fa;
+      background: #3b82f6;
       position: absolute;
-      bottom: -8px;
+      bottom: -10px;
       left: 0;
     }
     .section p, .section ul {
-      font-size: 1.1em;
-      color: #34495e;
+      font-size: 1.15em;
+      color: #334155;
     }
     .section ul {
       list-style: none;
       padding-left: 0;
     }
     .section ul li {
-      margin-bottom: 15px;
-      padding-left: 25px;
+      margin-bottom: 20px;
+      padding-left: 35px;
       position: relative;
+      transition: transform 0.3s;
+    }
+    .section ul li:hover {
+      transform: translateX(5px);
     }
     .section ul li::before {
       content: '\f00c';
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
-      color: #60a5fa;
+      color: #3b82f6;
       position: absolute;
       left: 0;
-      top: 3px;
+      top: 5px;
     }
     .skills ul {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 15px;
     }
     .skills ul li {
-      background: #60a5fa;
+      display: flex;
+      align-items: center;
+      background: #3b82f6;
       color: #fff;
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-size: 0.95em;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 1em;
       font-weight: 500;
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .skills ul li:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
-    .projects a, .languages a {
-      color: #60a5fa;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-    .projects a:hover, .languages a:hover {
-      color: #1e3a8a;
-      text-decoration: underline;
+    .skills ul li i {
+      margin-right: 10px;
+      font-size: 1.2em;
     }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-30px); }
+      from { opacity: 0; transform: translateY(-40px); }
       to { opacity: 1; transform: translateY(0); }
     }
     @keyframes slideIn {
-      from { opacity: 0; transform: translateY(50px); }
+      from { opacity: 0; transform: translateY(60px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes underline {
+      to { opacity: 1; }
     }
     @media (max-width: 768px) {
       .container {
         margin: 20px;
       }
       .header {
-        padding: 40px 15px;
+        padding: 50px 15px;
       }
       .header h1 {
-        font-size: 2.2em;
+        font-size: 2.5em;
       }
       .header p {
-        font-size: 1.1em;
+        font-size: 1.2em;
       }
       .section {
-        padding: 30px 20px;
+        padding: 40px 20px;
       }
       .section h2 {
-        font-size: 1.8em;
+        font-size: 1.9em;
       }
       .contact-info {
         flex-direction: column;
         align-items: center;
         gap: 15px;
+      }
+      .cta-button {
+        padding: 10px 25px;
+        font-size: 0.95em;
       }
     }
   </style>
@@ -184,6 +235,7 @@
         <a href="https://www.linkedin.com/in/taha-abbaszadeh-951147360/"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <a href="https://github.com/TahaAbszd"><i class="fab fa-github"></i> GitHub</a>
       </div>
+      <a href="mailto:tahaabszdeh@gmail.com" class="cta-button">Contact Me</a>
     </div>
 
     <div class="section">
@@ -205,34 +257,18 @@
     <div class="section skills">
       <h2>Skills</h2>
       <ul>
-        <li>Python</li>
-        <li>PyTorch</li>
-        <li>Pandas</li>
-        <li>Keras</li>
-        <li>NumPy</li>
-        <li>Django</li>
-        <li>API</li>
-        <li>Docker</li>
-        <li>Java</li>
-        <li>LaTeX</li>
+        <li><i class="fab fa-python"></i> Python</li>
+        <li><i class="fas fa-fire"></i> PyTorch</li>
+        <li><i class="fas fa-table"></i> Pandas</li>
+        <li><i class="fas fa-brain"></i> Keras</li>
+        <li><i class="fas fa-calculator"></i> NumPy</li>
+        <li><i class="fab fa-django"></i> Django</li>
+        <li><i class="fas fa-plug"></i> API</li>
+        <li><i class="fab fa-docker"></i> Docker</li>
+        <li><i class="fab fa-java"></i> Java</li>
+        <li><i class="fas fa-file-alt"></i> LaTeX</li>
       </ul>
     </div>
-<!-- 
-    <div class="section projects">
-      <h2>Projects</h2>
-      <ul>
-        <li>
-          <strong>Snake AI</strong><br>
-          Developed a Snake Agent for an AI course project at Hormozgan University, designed to compete in a pre-built environment.<br>
-          <a href="https://github.com/TahaAbszd/AI-Course-Final-Project">View Project</a>
-        </li>
-        <li>
-          <strong>Tex-Templates</strong><br>
-          Created a collection of clean and reusable LaTeX templates for academic and professional Persian documents.<br>
-          <a href="https://github.com/TahaAbszd/Tex-Templates">View Project</a>
-        </li>
-      </ul>
-    </div> -->
 
     <div class="section languages">
       <h2>Languages</h2>
