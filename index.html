@@ -1,58 +1,100 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>رزومه شخصی</title>
+  <title>Personal Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family: 'Vazirmatn', Arial, sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      background-color: #f4f4f9;
-      color: #333;
-      line-height: 1.6;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e0eafc, #cfdef3);
+      color: #2c3e50;
+      line-height: 1.8;
     }
     .container {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
+      max-width: 1000px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
     }
     .header {
+      background: #2c3e50;
+      color: #fff;
       text-align: center;
-      padding: 20px 0;
-      border-bottom: 2px solid #007bff;
+      padding: 50px 20px;
+      position: relative;
     }
     .header h1 {
-      margin: 0;
-      font-size: 2.5em;
-      color: #007bff;
+      font-size: 2.8em;
+      margin-bottom: 10px;
+      animation: fadeIn 1s ease-in;
     }
     .header p {
-      margin: 5px 0;
-      color: #555;
+      font-size: 1.2em;
+      opacity: 0.8;
+    }
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .contact-info a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1em;
+      transition: color 0.3s;
+    }
+    .contact-info a:hover {
+      color: #3498db;
     }
     .section {
-      margin: 20px 0;
+      padding: 40px 30px;
+      border-bottom: 1px solid #eee;
+    }
+    .section:last-child {
+      border-bottom: none;
     }
     .section h2 {
-      font-size: 1.8em;
-      color: #007bff;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 5px;
+      font-size: 2em;
+      color: #3498db;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .section h2::after {
+      content: '';
+      width: 50px;
+      height: 3px;
+      background: #3498db;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
     }
     .section ul {
-      list-style-type: none;
-      padding: 0;
+      list-style: none;
     }
     .section ul li {
-      margin: 10px 0;
+      margin-bottom: 20px;
+      padding-left: 20px;
+      position: relative;
     }
-    .section ul li strong {
-      color: #333;
+    .section ul li::before {
+      content: '\f058';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: #3498db;
+      position: absolute;
+      left: 0;
     }
     .skills ul {
       display: flex;
@@ -60,100 +102,98 @@
       gap: 10px;
     }
     .skills ul li {
-      background-color: #007bff;
+      background: #3498db;
       color: #fff;
-      padding: 5px 10px;
-      border-radius: 5px;
+      padding: 8px 15px;
+      border-radius: 20px;
       font-size: 0.9em;
+      transition: transform 0.3s;
     }
-    .contact-info {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
+    .skills ul li:hover {
+      transform: scale(1.1);
     }
-    .contact-info div {
-      flex: 1;
-      min-width: 200px;
+    .projects a {
+      color: #3498db;
+      text-decoration: none;
+      font-weight: 600;
     }
-    @media (max-width: 600px) {
+    .projects a:hover {
+      text-decoration: underline;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
       .container {
-        margin: 10px;
-        padding: 15px;
+        margin: 20px;
       }
       .header h1 {
-        font-size: 2em;
+        font-size: 2.2em;
+      }
+      .section {
+        padding: 20px;
       }
       .section h2 {
-        font-size: 1.5em;
+        font-size: 1.6em;
       }
       .contact-info {
         flex-direction: column;
+        align-items: center;
       }
-    }
-    @font-face {
-      font-family: 'Vazirmatn';
-      src: url('https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
-      font-weight: normal;
-      font-style: normal;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1>نام و نام خانوادگی</h1>
-      <p>توسعه‌دهنده وب | تهران، ایران</p>
-    </div>
-
-    <div class="section contact-info">
-      <div>
-        <p><strong>ایمیل:</strong> example@email.com</p>
-        <p><strong>تلفن:</strong> 0912-345-6789</p>
-      </div>
-      <div>
-        <p><strong>لینکدین:</strong> <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></p>
-        <p><strong>گیت‌هاب:</strong> <a href="https://github.com/yourusername">github.com/yourusername</a></p>
+      <h1>Your Name</h1>
+      <p>Web Developer | Tehran, Iran</p>
+      <div class="contact-info">
+        <a href="mailto:example@email.com"><i class="fas fa-envelope"></i> example@email.com</a>
+        <a href="tel:+989123456789"><i class="fas fa-phone"></i> +98 912 345 6789</a>
+        <a href="https://linkedin.com/in/yourprofile"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/yourusername"><i class="fab fa-github"></i> GitHub</a>
       </div>
     </div>
 
     <div class="section">
-      <h2>درباره من</h2>
-      <p>من یک توسعه‌دهنده وب با بیش از ۳ سال تجربه در طراحی و توسعه وب‌سایت‌های مدرن و کاربرپسند هستم. علاقه‌مند به یادگیری فناوری‌های جدید و حل مسائل پیچیده با رویکرد خلاقانه.</p>
+      <h2>About Me</h2>
+      <p>I'm a passionate web developer with over 3 years of experience in crafting modern, user-friendly websites. Skilled in creating responsive designs and solving complex problems with a creative approach. Always eager to learn new technologies and contribute to innovative projects.</p>
     </div>
 
     <div class="section">
-      <h2>تحصیلات</h2>
+      <h2>Education</h2>
       <ul>
         <li>
-          <strong>کارشناسی مهندسی نرم‌افزار</strong><br>
-          دانشگاه تهران، ۱۳۹۷ - ۱۴۰۱<br>
-          معدل: ۱۷.۵
+          <strong>B.Sc. in Software Engineering</strong><br>
+          University of Tehran, 2018 - 2022<br>
+          GPA: 3.7/4.0
         </li>
       </ul>
     </div>
 
     <div class="section">
-      <h2>تجربیات کاری</h2>
+      <h2>Work Experience</h2>
       <ul>
         <li>
-          <strong>توسعه‌دهنده فرانت‌اند</strong><br>
-          شرکت فناوری نوین، تهران | ۱۴۰۱ - اکنون<br>
-          - توسعه وب‌سایت‌های responsive با استفاده از HTML، CSS و JavaScript<br>
-          - همکاری با تیم طراحی برای بهبود تجربه کاربری<br>
-          - بهینه‌سازی عملکرد وب‌سایت‌ها
+          <strong>Front-End Developer</strong><br>
+          Novin Tech Co., Tehran | 2022 - Present<br>
+          - Developed responsive websites using HTML, CSS, and JavaScript<br>
+          - Collaborated with UX designers to enhance user experience<br>
+          - Optimized web performance, improving load times by 30%
         </li>
         <li>
-          <strong>کارآموز توسعه وب</strong><br>
-          استارتاپ خلاق، تهران | ۱۴۰۰ - ۱۴۰۱<br>
-          - کمک به توسعه صفحات وب با فریم‌ورک React<br>
-          - یادگیری اصول توسعه تیمی و استفاده از Git
+          <strong>Web Development Intern</strong><br>
+          Creative Startup, Tehran | 2021 - 2022<br>
+          - Assisted in building web pages using React framework<br>
+          - Learned team collaboration and Git version control
         </li>
       </ul>
     </div>
 
     <div class="section skills">
-      <h2>مهارت‌ها</h2>
+      <h2>Skills</h2>
       <ul>
         <li>HTML5</li>
         <li>CSS3</li>
@@ -166,19 +206,20 @@
       </ul>
     </div>
 
-    <div class="section">
-      <h2>پروژه‌ها</h2>
+    <div class="section projects">
+      <h2>Projects</h2>
       <ul>
         <li>
-          <strong>وب‌سایت فروشگاه آنلاین</strong><br>
-          - توسعه یک پلتفرم تجارت الکترونیک با React و Node.js<br>
-          - پیاده‌سازی سیستم پرداخت آنلاین<br>
-          - <a href="https://example.com">لینک پروژه</a>
+          <strong>E-Commerce Website</strong><br>
+          - Built a fully functional online store using React and Node.js<br>
+          - Integrated secure payment gateways<br>
+          - <a href="https://example.com">View Project</a>
         </li>
         <li>
-          <strong>اپلیکیشن مدیریت وظایف</strong><br>
-          - طراحی و توسعه اپلیکیشن وب با استفاده از JavaScript و Firebase<br>
-          - <a href="https://example.com">لینک پروژه</a>
+          <strong>Task Management App</strong><br>
+          - Developed a web app using JavaScript and Firebase<br>
+          - Enabled real-time task updates and user authentication<br>
+          - <a href="https://example.com">View Project</a>
         </li>
       </ul>
     </div>
