@@ -4,17 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Taha Abbaszadeh - Resume</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-
   <style>
     :root {
-      --primary: #00ffe5;
-      --secondary: #00a3ff;
-      --background: #0a0a0a;
-      --text-light: #f8f8f8;
-      --text-muted: #aaaaaa;
+      --primary: #00e5ff;
+      --primary-light: #26ffff;
+      --accent: #ffca28;
+      --background: #121212;
+      --text-light: #e0e0e0;
+      --text-muted: #9e9e9e;
     }
 
     * {
@@ -24,176 +23,248 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Roboto', sans-serif;
       background: var(--background);
       color: var(--text-light);
-      overflow-x: hidden;
-    }
-
-    /* Background Particles Layer */
-    #particles-js {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      top: 0;
-      left: 0;
+      line-height: 1.6;
     }
 
     .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
+      max-width: 1000px;
+      margin: 40px auto;
+      background: #1e1e1e;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
 
     .header {
+      background: #000;
+      padding: 50px 20px;
       text-align: center;
-      padding: 80px 20px;
     }
 
     .header h1 {
-      font-size: 3rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.8em;
       font-weight: 700;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .header p {
-      font-size: 1.2rem;
-      font-weight: 300;
-      color: var(--text-muted);
-      margin-top: 10px;
-    }
-
-    .contact-info {
-      margin-top: 25px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .contact-info a {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      color: var(--text-light);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .contact-info a:hover {
-      background: rgba(0, 255, 229, 0.15);
-      box-shadow: 0 0 15px var(--primary);
-      transform: translateY(-3px);
-    }
-
-    .section {
-      margin-top: 60px;
-    }
-
-    .section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
       color: var(--primary);
     }
 
-    .section p, .section li {
-      font-size: 1.1rem;
+    .header p {
+      font-size: 1.2em;
       color: var(--text-muted);
-      line-height: 1.6;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .contact-info a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 1em;
+      transition: color 0.3s;
+    }
+
+    .contact-info a:hover {
+      color: var(--accent);
+    }
+
+    .section {
+      padding: 30px;
+    }
+
+    .section h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6em;
+      font-weight: 600;
+      color: var(--primary-light);
+      margin-bottom: 15px;
+      border-bottom: 2px solid var(--primary);
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .section ul {
+      list-style: none;
+    }
+
+    .section ul li {
+      margin-bottom: 15px;
     }
 
     .skills ul {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
     }
 
     .skills ul li {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background: var(--primary);
       color: #000;
-      padding: 8px 15px;
+      padding: 8px 14px;
       border-radius: 20px;
-      font-weight: 600;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+    }
+
+    .skills ul li i {
+      margin-right: 6px;
+    }
+
+    /* Experience Styles */
+    .experience ul li {
+      padding-left: 30px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .toggle-icon {
+      position: absolute;
+      left: 0;
+      top: 5px;
+      color: var(--primary);
       transition: transform 0.3s ease;
     }
 
-    .skills ul li:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 15px var(--primary);
+    .toggle-icon.rotated {
+      transform: rotate(90deg);
     }
 
-    /* Responsive Fix */
-    @media (max-width: 600px) {
-      .header h1 {
-        font-size: 2rem;
-        white-space: normal;
-      }
+    .experience-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0;
+      color: var(--text-muted);
+    }
+
+    .experience-details.open {
+      max-height: 300px;
+      padding: 10px 0 0 0;
+    }
+
+    .experience-details ul li::before {
+      content: '\f105';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: var(--primary);
+      margin-right: 5px;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <div class="header">
+      <h1>Taha Abbaszadeh</h1>
+      <p>Computer Engineering Student & AI/ML Researcher | Bandar Abbas, Iran</p>
+      <div class="contact-info">
+        <a href="mailto:tahaabszdeh@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        <a href="https://www.linkedin.com/in/taha-abbaszadeh-951147360/"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/TahaAbszd"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </div>
 
-<div id="particles-js"></div>
+    <div class="section">
+      <h2>About Me</h2>
+      <p>I am a third-year Computer Engineering student at Hormozgan University, passionate about AI and ML research, especially in healthcare applications. I have experience as a teaching assistant, enhancing my technical expertise while guiding others in their learning.</p>
+    </div>
 
-<div class="container">
-  <div class="header" data-aos="fade-up">
-    <h1>Taha Abbaszadeh</h1>
-    <p>Computer Engineering Student • AI/ML Researcher</p>
-    <div class="contact-info">
-      <a href="mailto:tahaabszdeh@gmail.com"><i class="fas fa-envelope"></i> Contact</a>
-      <a href="#"><i class="fas fa-download"></i> Download Resume</a>
-      <a href="https://github.com/TahaAbszd"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://linkedin.com/in/taha-abbaszadeh-951147360"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <div class="section">
+      <h2>Education</h2>
+      <ul>
+        <li><strong>B.Sc. in Computer Engineering</strong><br>Hormozgan University, Bandar Abbas, Iran (2023 - Present)</li>
+      </ul>
+    </div>
+
+    <div class="section experience">
+      <h2>Teaching Assistant Experience</h2>
+      <ul>
+        <li>
+          <i class="fas fa-chevron-right toggle-icon"></i>
+          <strong>Data Structures and Algorithms</strong> – Hormozgan University<br>
+          Instructors: Dr. Shahram Golzari & Eng. Parisa Zarei<br>
+          February 2025 - Present
+          <div class="experience-details">
+            <ul>
+              <li>Designed and graded algorithmic exercises.</li>
+              <li>Helped students with problem-solving sessions.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <i class="fas fa-chevron-right toggle-icon"></i>
+          <strong>Discrete Mathematics</strong> – Hormozgan University<br>
+          Instructor: Dr. Mahmoud Reza Saybani<br>
+          February 2025 - Present
+          <div class="experience-details">
+            <ul>
+              <li>Prepared and evaluated assignments on logic and set theory.</li>
+              <li>Conducted weekly Q&A sessions.</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="section skills">
+      <h2>Skills</h2>
+      <ul>
+        <li><i class="fab fa-python"></i> Python</li>
+        <li><i class="fas fa-fire"></i> PyTorch</li>
+        <li><i class="fas fa-table"></i> Pandas</li>
+        <li><i class="fas fa-brain"></i> Keras</li>
+        <li><i class="fas fa-calculator"></i> NumPy</li>
+        <li><i class="fab fa-django"></i> Django</li>
+        <li><i class="fas fa-plug"></i> API</li>
+        <li><i class="fab fa-docker"></i> Docker</li>
+        <li><i class="fab fa-java"></i> Java</li>
+        <li><i class="fas fa-file-alt"></i> LaTeX</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Languages</h2>
+      <ul>
+        <li>English (Fluent)</li>
+        <li>Persian (Native)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Interests</h2>
+      <p>Artificial Intelligence in Healthcare, Machine Learning, Research and Development</p>
     </div>
   </div>
 
-  <div class="section" data-aos="fade-up">
-    <h2>About Me</h2>
-    <p>Third-year Computer Engineering student and AI/ML researcher focused on healthcare applications — building practical, deployable solutions.</p>
-  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const items = document.querySelectorAll(".experience ul li");
 
-  <div class="section skills" data-aos="fade-up">
-    <h2>Skills</h2>
-    <ul>
-      <li>Python</li>
-      <li>PyTorch</li>
-      <li>Pandas</li>
-      <li>Keras</li>
-      <li>NumPy</li>
-      <li>Django</li>
-      <li>Docker</li>
-      <li>Java</li>
-      <li>LaTeX</li>
-    </ul>
-  </div>
-</div>
+      items.forEach(item => {
+        item.addEventListener("click", () => {
+          const details = item.querySelector(".experience-details");
+          const icon = item.querySelector(".toggle-icon");
+          const isOpen = details.classList.contains("open");
 
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({ duration: 1000, once: true });
+          // بستن همه موارد
+          document.querySelectorAll(".experience-details").forEach(d => d.classList.remove("open"));
+          document.querySelectorAll(".toggle-icon").forEach(i => i.classList.remove("rotated"));
 
-  particlesJS("particles-js", {
-    "particles": {
-      "number": { "value": 80 },
-      "color": { "value": "#00ffe5" },
-      "shape": { "type": "circle" },
-      "opacity": { "value": 0.5 },
-      "size": { "value": 3 },
-      "line_linked": { "enable": true, "color": "#00ffe5" },
-      "move": { "enable": true, "speed": 2 }
-    }
-  });
-</script>
+          // باز کردن آیتم کلیک‌شده اگر بسته بود
+          if (!isOpen) {
+            details.classList.add("open");
+            icon.classList.add("rotated");
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
