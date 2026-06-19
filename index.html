@@ -6,71 +6,53 @@
 <title>Taha Abbaszadeh — Resume</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
 <style>
   :root{
-    --bg:#fbfbfc;
-    --bg-alt:#f2f4f5;
-    --text:#15171c;
-    --muted:#6b7280;
-    --accent:#0d9488;
-    --accent-soft:rgba(13,148,136,0.10);
-    --border:#e5e7eb;
-    --grid:rgba(0,0,0,0.035);
-    --shadow:rgba(15,23,30,0.06);
+    --bg:#ffffff;
+    --bg-alt:#fafafa;
+    --text:#111111;
+    --muted:#767676;
+    --border:#e2e2e2;
+    --hover-tint:rgba(0,0,0,0.035);
   }
   html[data-theme="dark"]{
-    --bg:#0a0d12;
-    --bg-alt:#10141a;
-    --text:#e7e9ec;
-    --muted:#8a90a0;
-    --accent:#2dd4bf;
-    --accent-soft:rgba(45,212,191,0.12);
-    --border:#1c2128;
-    --grid:rgba(255,255,255,0.035);
-    --shadow:rgba(0,0,0,0.3);
+    --bg:#000000;
+    --bg-alt:#0a0a0a;
+    --text:#f2f2f2;
+    --muted:#969696;
+    --border:#262626;
+    --hover-tint:rgba(255,255,255,0.05);
   }
 
   *{ margin:0; padding:0; box-sizing:border-box; }
 
   body{
-    font-family:'Manrope', sans-serif;
+    font-family:'Jost', sans-serif;
     background:var(--bg);
     color:var(--text);
     font-weight:300;
-    line-height:1.8;
+    line-height:1.85;
     -webkit-font-smoothing:antialiased;
     transition:background-color .45s ease, color .45s ease;
     position:relative;
     overflow-x:hidden;
   }
 
-  body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    background-image:
-      repeating-linear-gradient(0deg, var(--grid) 0px, transparent 1px, transparent 48px),
-      repeating-linear-gradient(90deg, var(--grid) 0px, transparent 1px, transparent 48px);
-    transition:background-image .45s ease;
-  }
-
   .scanline{
     position:fixed;
     left:0; top:0;
     width:100%;
-    height:2px;
-    background:linear-gradient(90deg, transparent, var(--accent), transparent);
-    box-shadow:0 0 18px var(--accent);
-    opacity:.9;
+    height:1px;
+    background:var(--text);
+    opacity:.5;
     z-index:50;
     animation:scanSweep 1.5s cubic-bezier(.4,0,.2,1) forwards;
     pointer-events:none;
   }
   @keyframes scanSweep{
-    0%{ top:0; opacity:1; }
-    85%{ opacity:.6; }
+    0%{ top:0; opacity:.6; }
+    85%{ opacity:.35; }
     100%{ top:100%; opacity:0; }
   }
 
@@ -96,8 +78,8 @@
     z-index:40;
     transition:border-color .3s ease, transform .25s ease, background-color .45s ease;
   }
-  .theme-toggle:hover{ transform:scale(1.07); border-color:var(--accent); }
-  .theme-toggle:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+  .theme-toggle:hover{ transform:scale(1.07); border-color:var(--text); }
+  .theme-toggle:focus-visible{ outline:2px solid var(--text); outline-offset:3px; }
   .theme-toggle svg{
     width:18px; height:18px;
     stroke:var(--text);
@@ -115,22 +97,23 @@
     animation:riseIn .7s ease forwards;
   }
   .header h1{
-    font-size:clamp(2.1rem, 6vw, 3rem);
-    font-weight:200;
-    letter-spacing:-0.03em;
+    font-family: 'Manrope', sans-serif;
+    font-size:clamp(2.3rem, 6.5vw, 3.2rem);
+    font-weight:600;
+    letter-spacing:-0.01em;
     margin-bottom:10px;
   }
   .header .role{
-    font-size:1.02rem;
+    font-size:.98rem;
     color:var(--muted);
     font-weight:300;
-    letter-spacing:.01em;
+    letter-spacing:.03em;
   }
 
   .contact-info{
     display:flex;
     gap:22px;
-    margin-top:22px;
+    margin-top:24px;
     flex-wrap:wrap;
     opacity:0;
     animation:riseIn .7s ease forwards;
@@ -139,8 +122,9 @@
   .contact-info a{
     color:var(--muted);
     text-decoration:none;
-    font-size:.92rem;
+    font-size:.88rem;
     font-weight:400;
+    letter-spacing:.02em;
     display:inline-flex;
     align-items:center;
     gap:7px;
@@ -154,10 +138,10 @@
     position:absolute;
     left:0; bottom:0;
     width:0; height:1px;
-    background:var(--accent);
+    background:var(--text);
     transition:width .3s ease;
   }
-  .contact-info a:hover{ color:var(--accent); }
+  .contact-info a:hover{ color:var(--text); }
   .contact-info a:hover::after{ width:100%; }
 
   .divider{
@@ -177,11 +161,12 @@
   .section{ margin-bottom:6px; }
 
   .eyebrow{
-    font-size:.74rem;
-    font-weight:600;
-    letter-spacing:.18em;
+    font-family:'Jost', sans-serif;
+    font-size:.72rem;
+    font-weight:500;
+    letter-spacing:.22em;
     text-transform:uppercase;
-    color:var(--accent);
+    color:var(--text);
     margin-bottom:18px;
     position:relative;
     display:inline-block;
@@ -192,7 +177,7 @@
     left:0; bottom:-8px;
     width:0;
     height:1px;
-    background:var(--accent);
+    background:var(--text);
     transition:width .6s ease .1s;
   }
   .reveal.in-view .eyebrow::after{ width:26px; }
@@ -200,11 +185,17 @@
   .section > p{ color:var(--muted); font-size:.97rem; }
 
   .edu-item, .exp-item, .project-item{ margin-bottom:22px; }
-  .item-title{ font-weight:500; font-size:1.02rem; letter-spacing:-0.005em; }
-  .item-subtitle{ color:var(--muted); font-size:.88rem; font-weight:300; margin-top:2px; }
+  .item-title{
+    font-family: 'Manrope', sans-serif;
+    font-weight:600;
+    font-size:1.08rem;
+    letter-spacing:0.005em;
+    color:var(--text);
+  }
+  .item-subtitle{ color:var(--muted); font-size:.85rem; font-weight:300; margin-top:3px; letter-spacing:.01em; }
 
   .research-card{
-    border-left:1px solid var(--accent);
+    border-left:1px solid var(--text);
     padding:4px 0 4px 20px;
   }
   .research-card .item-title{ margin-bottom:3px; }
@@ -219,7 +210,7 @@
   }
   .research-card li::before{
     content:"–";
-    position:absolute; left:0; color:var(--accent);
+    position:absolute; left:0; color:var(--text);
   }
 
   .exp-trigger{
@@ -230,13 +221,13 @@
   }
   .toggle-icon{
     position:absolute;
-    left:0; top:7px;
+    left:0; top:9px;
     width:9px; height:9px;
     stroke:var(--muted);
     transition:transform .3s ease, stroke .3s ease;
   }
-  .exp-trigger:hover .toggle-icon{ stroke:var(--accent); }
-  .toggle-icon.rotated{ transform:rotate(90deg); stroke:var(--accent); }
+  .exp-trigger:hover .toggle-icon{ stroke:var(--text); }
+  .toggle-icon.rotated{ transform:rotate(90deg); stroke:var(--text); }
 
   .experience-details{
     max-height:0;
@@ -249,15 +240,11 @@
     transition:max-height .4s cubic-bezier(1,0,1,0);
     margin-top:10px;
   }
-  .experience-details ul{ list-style:none; }
-  .experience-details li{
-    position:relative;
-    padding-left:14px;
-    margin-bottom:7px;
-    font-size:.9rem;
+  .experience-details p{
+    font-size:.92rem;
     color:var(--muted);
+    max-width:50ch;
   }
-  .experience-details li::before{ content:"–"; position:absolute; left:0; color:var(--border); }
 
   .project-item{
     padding:12px 14px;
@@ -268,24 +255,24 @@
     transition:background-color .3s ease, border-color .3s ease, transform .3s ease;
   }
   .project-item:hover{
-    background:var(--accent-soft);
-    border-left:1px solid var(--accent);
+    background:var(--hover-tint);
+    border-left:1px solid var(--text);
     transform:translateX(2px);
   }
-  .project-item p{ font-size:.92rem; color:var(--muted); margin-top:4px; }
+  .project-item p{ font-size:.92rem; color:var(--muted); margin-top:5px; }
 
   .skills-list{ display:flex; flex-wrap:wrap; gap:9px; list-style:none; }
   .skills-list li{
     border:1px solid var(--border);
     padding:6px 14px;
     border-radius:20px;
-    font-size:.84rem;
+    font-size:.82rem;
     font-weight:400;
     color:var(--muted);
     transition:border-color .25s ease, color .25s ease, transform .25s ease;
   }
   .skills-list li:hover{
-    border-color:var(--accent);
+    border-color:var(--text);
     color:var(--text);
     transform:translateY(-2px);
   }
@@ -308,8 +295,8 @@
 <body>
 
 <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" aria-label="Toggle dark mode">
-  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="4" y1="12" x2="1.5" y2="12"/><line x1="22.5" y1="12" x2="20" y2="12"/><line x1="5.6" y1="5.6" x2="3.9" y2="3.9"/><line x1="20.1" y1="20.1" x2="18.4" y2="18.4"/><line x1="5.6" y1="18.4" x2="3.9" y2="20.1"/><line x1="20.1" y1="3.9" x2="18.4" y2="5.6"/></svg>
-  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="4" y1="12" x2="1.5" y2="12"/><line x1="22.5" y1="12" x2="20" y2="12"/><line x1="5.6" y1="5.6" x2="3.9" y2="3.9"/><line x1="20.1" y1="20.1" x2="18.4" y2="18.4"/><line x1="5.6" y1="18.4" x2="3.9" y2="20.1"/><line x1="20.1" y1="3.9" x2="18.4" y2="5.6"/></svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
 </div>
 
 <div class="container">
@@ -321,15 +308,15 @@
 
   <div class="contact-info">
     <a href="mailto:tahaabszdeh@gmail.com">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
       Email
     </a>
     <a href="https://www.linkedin.com/in/taha-abbaszadeh-951147360/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"/><line x1="7.5" y1="10.5" x2="7.5" y2="16.5"/><circle cx="7.5" cy="7.2" r="0.4" fill="currentColor"/><path d="M12 16.5v-3.7c0-1.5 1-2.4 2.3-2.4 1.3 0 2.2.9 2.2 2.4v3.7"/><line x1="12" y1="10.5" x2="12" y2="16.5"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"/><line x1="7.5" y1="10.5" x2="7.5" y2="16.5"/><circle cx="7.5" cy="7.2" r="0.4" fill="currentColor"/><path d="M12 16.5v-3.7c0-1.5 1-2.4 2.3-2.4 1.3 0 2.2.9 2.2 2.4v3.7"/><line x1="12" y1="10.5" x2="12" y2="16.5"/></svg>
       LinkedIn
     </a>
     <a href="https://github.com/TahaAbszd" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c-5.2 0-9.5 4.2-9.5 9.5 0 4.2 2.7 7.8 6.6 9.1.5.1.6-.2.6-.5v-1.8c-2.7.6-3.3-1.2-3.3-1.2-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 3 .8.1-.6.3-1.1.6-1.3-2.2-.2-4.5-1.1-4.5-4.8 0-1.1.4-1.9 1-2.6-.1-.2-.4-1.2.1-2.6 0 0 .8-.3 2.7 1 .8-.2 1.6-.3 2.4-.3.8 0 1.6.1 2.4.3 1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.6.6.7 1 1.5 1 2.6 0 3.7-2.3 4.6-4.5 4.8.4.3.7 1 .7 2v3c0 .3.1.6.6.5 3.9-1.3 6.6-4.9 6.6-9.1 0-5.3-4.3-9.5-9.5-9.5Z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c-5.2 0-9.5 4.2-9.5 9.5 0 4.2 2.7 7.8 6.6 9.1.5.1.6-.2.6-.5v-1.8c-2.7.6-3.3-1.2-3.3-1.2-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 3 .8.1-.6.3-1.1.6-1.3-2.2-.2-4.5-1.1-4.5-4.8 0-1.1.4-1.9 1-2.6-.1-.2-.4-1.2.1-2.6 0 0 .8-.3 2.7 1 .8-.2 1.6-.3 2.4-.3.8 0 1.6.1 2.4.3 1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.6.6.7 1 1.5 1 2.6 0 3.7-2.3 4.6-4.5 4.8.4.3.7 1 .7 2v3c0 .3.1.6.6.5 3.9-1.3 6.6-4.9 6.6-9.1 0-5.3-4.3-9.5-9.5-9.5Z"/></svg>
       GitHub
     </a>
   </div>
@@ -338,7 +325,7 @@
 
   <div class="section reveal">
     <div class="eyebrow">About</div>
-    <p>I am a fourth-year Computer Engineering student at Hormozgan University, passionate about AI and ML research, especially in healthcare applications. I have experience as a teaching assistant, enhancing my technical expertise while guiding others in their learning.</p>
+    <p>I'm a fourth-year Computer Engineering student at Hormozgan University. Most of what I do these days circles back to AI in healthcare — I like problems where the stakes are real and the data is messy. Alongside that, I work as a teaching assistant, which has probably taught me as much as it's taught the students.</p>
   </div>
 
   <div class="divider"></div>
@@ -347,12 +334,8 @@
     <div class="eyebrow">Current Research</div>
     <div class="research-card">
       <div class="item-title">Deep Learning for Brain Tumor Detection &amp; 3D Segmentation</div>
-      <div class="item-subtitle">Advisor: Dr. Shahram Golzari · Active Research, 2026</div>
-      <p>Investigating state-of-the-art deep learning architectures for high-precision automated detection and semantic segmentation of brain tumors (gliomas) using multi-modal MRI scans.</p>
-      <ul>
-        <li>Benchmarking advanced encoder–decoder networks (U-Net variants, Vision Transformers) on benchmark datasets.</li>
-        <li>Focusing on class imbalance in small, irregular tumor boundaries and sub-regions (enhancing core, edema, enhancing tumor).</li>
-      </ul>
+      <div class="item-subtitle">Advisor: Dr. Shahram Golzari · Ongoing, 2026</div>
+      <p>Working with my advisor on detecting and segmenting brain tumors from MRI scans. The interesting part isn't getting a model to work in general — it's getting it to work on the small, oddly shaped tumor regions that usually get lost in the averages. I'm comparing a few segmentation approaches, from U-Net variants to newer transformer-based ones, to see what actually holds up there.</p>
     </div>
   </div>
 
@@ -375,13 +358,10 @@
       <div class="exp-trigger">
         <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
         <div class="item-title">Data Structures and Algorithms</div>
-        <div class="item-subtitle">Instructors: Dr. Shahram Golzari &amp; Eng. Parisa Zarei · Feb 2025 – Present</div>
+        <div class="item-subtitle">Dr. Shahram Golzari &amp; Eng. Parisa Zarei · Feb 2025 – Present</div>
       </div>
       <div class="experience-details">
-        <ul>
-          <li>Designed and graded algorithmic exercises.</li>
-          <li>Helped students with problem-solving sessions.</li>
-        </ul>
+        <p>I put together and grade the algorithm exercises for the course, and spend a fair bit of time in office hours just talking students through where their logic is going sideways — usually more useful than any amount of grading.</p>
       </div>
     </div>
 
@@ -389,13 +369,10 @@
       <div class="exp-trigger">
         <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
         <div class="item-title">Discrete Mathematics</div>
-        <div class="item-subtitle">Instructor: Dr. Mahmoud Reza Saybani · Feb 2025 – Present</div>
+        <div class="item-subtitle">Dr. Mahmoud Reza Saybani · Feb 2025 – Present</div>
       </div>
       <div class="experience-details">
-        <ul>
-          <li>Prepared and evaluated assignments on logic and set theory.</li>
-          <li>Conducted weekly Q&amp;A sessions.</li>
-        </ul>
+        <p>Similar role here — assignments around logic and set theory, plus a weekly session where people can bring whatever's not clicking. It's a good way to find out what's actually confusing versus what just sounds confusing in lecture.</p>
       </div>
     </div>
   </div>
@@ -407,22 +384,22 @@
 
     <div class="project-item">
       <div class="item-title">4-Stage Dementia Classification</div>
-      <p>Designed and evaluated a custom multi-layer CNN to classify neuroimaging data (MRI) into four distinct stages of Alzheimer's/Dementia, optimizing accuracy through advanced regularization techniques.</p>
+      <p>Built a CNN from scratch to classify brain MRIs into the four stages of Alzheimer's. The dataset was small, so most of the actual effort went into keeping the model from just memorizing it.</p>
     </div>
 
     <div class="project-item">
       <div class="item-title">Real Estate Price Prediction (Divar Dataset)</div>
-      <p>Built an end-to-end regression pipeline to scrape, clean, and analyze real estate market data from the Divar platform. Benchmarked XGBoost and Random Forests to forecast property values from engineered spatial and structural features.</p>
+      <p>Scraped and cleaned listings off Divar, then tried a handful of models — mainly XGBoost — to see how well location and property features could actually predict price in a market that doesn't always behave rationally.</p>
     </div>
 
     <div class="project-item">
       <div class="item-title">Amazon Reviews Sentiment Analysis</div>
-      <p>Developed an NLP pipeline for sentiment detection on large-scale Amazon text reviews, using modern preprocessing, tokenization, and deep sequence models to classify customer attitudes with high semantic precision.</p>
+      <p>A sentiment classifier for Amazon reviews, partly as an excuse to get more comfortable with NLP preprocessing and a couple of transformer-based approaches I hadn't used much before.</p>
     </div>
 
     <div class="project-item">
-      <div class="item-title">Persian Traffic Sign Detection (PTSD Dataset)</div>
-      <p>Implemented deep neural networks for robust traffic sign classification, with a custom computer vision pipeline incorporating CLAHE contrast enhancement and restoration algorithms to mitigate real-world noise.</p>
+      <div class="item-title">Persian Traffic Sign Detection</div>
+      <p>Trained a model to recognize Persian traffic signs, with extra preprocessing to handle the kind of low-light, low-contrast images you actually run into on real roads rather than in a clean dataset.</p>
     </div>
   </div>
 
@@ -453,7 +430,7 @@
 
   <div class="section reveal">
     <div class="eyebrow">Interests</div>
-    <p>Artificial Intelligence in Healthcare, Machine Learning, Research &amp; Development</p>
+    <p>AI in healthcare, machine learning, and research more broadly.</p>
   </div>
 
 </div>
