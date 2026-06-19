@@ -1,352 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Taha Abbaszadeh - Resume</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <style>
-    :root {
-      --bg: #0b0f19;
-      --text: #f3f4f6;
-      --text-muted: #9ca3af;
-      --accent: #38bdf8;
-      --card-bg: #111827;
-      --border: #1f2937;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Taha Abbaszadeh — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#fbfbfc;
+    --bg-alt:#f2f4f5;
+    --text:#15171c;
+    --muted:#6b7280;
+    --accent:#0d9488;
+    --accent-soft:rgba(13,148,136,0.10);
+    --border:#e5e7eb;
+    --grid:rgba(0,0,0,0.035);
+    --shadow:rgba(15,23,30,0.06);
+  }
+  html[data-theme="dark"]{
+    --bg:#0a0d12;
+    --bg-alt:#10141a;
+    --text:#e7e9ec;
+    --muted:#8a90a0;
+    --accent:#2dd4bf;
+    --accent-soft:rgba(45,212,191,0.12);
+    --border:#1c2128;
+    --grid:rgba(255,255,255,0.035);
+    --shadow:rgba(0,0,0,0.3);
+  }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  *{ margin:0; padding:0; box-sizing:border-box; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      padding: 40px 20px;
-    }
+  body{
+    font-family:'Manrope', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    font-weight:300;
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+    transition:background-color .45s ease, color .45s ease;
+    position:relative;
+    overflow-x:hidden;
+  }
 
-    .container {
-      max-width: 760px;
-      margin: 0 auto;
-    }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background-image:
+      repeating-linear-gradient(0deg, var(--grid) 0px, transparent 1px, transparent 48px),
+      repeating-linear-gradient(90deg, var(--grid) 0px, transparent 1px, transparent 48px);
+    transition:background-image .45s ease;
+  }
 
-    /* Header Section */
-    .header {
-      margin-bottom: 40px;
-    }
+  .scanline{
+    position:fixed;
+    left:0; top:0;
+    width:100%;
+    height:2px;
+    background:linear-gradient(90deg, transparent, var(--accent), transparent);
+    box-shadow:0 0 18px var(--accent);
+    opacity:.9;
+    z-index:50;
+    animation:scanSweep 1.5s cubic-bezier(.4,0,.2,1) forwards;
+    pointer-events:none;
+  }
+  @keyframes scanSweep{
+    0%{ top:0; opacity:1; }
+    85%{ opacity:.6; }
+    100%{ top:100%; opacity:0; }
+  }
 
-    .header h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      margin-bottom: 8px;
-    }
+  .container{
+    max-width:680px;
+    margin:0 auto;
+    padding:90px 24px 100px;
+  }
 
-    .header p {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      font-weight: 400;
-    }
+  .theme-toggle{
+    position:fixed;
+    top:24px;
+    right:24px;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid var(--border);
+    background:var(--bg-alt);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:40;
+    transition:border-color .3s ease, transform .25s ease, background-color .45s ease;
+  }
+  .theme-toggle:hover{ transform:scale(1.07); border-color:var(--accent); }
+  .theme-toggle:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+  .theme-toggle svg{
+    width:18px; height:18px;
+    stroke:var(--text);
+    position:absolute;
+    transition:opacity .35s ease, transform .45s ease;
+  }
+  .icon-sun{ opacity:1; transform:rotate(0deg) scale(1); }
+  .icon-moon{ opacity:0; transform:rotate(-60deg) scale(.5); }
+  html[data-theme="dark"] .icon-sun{ opacity:0; transform:rotate(60deg) scale(.5); }
+  html[data-theme="dark"] .icon-moon{ opacity:1; transform:rotate(0deg) scale(1); }
 
-    .contact-info {
-      display: flex;
-      gap: 20px;
-      margin-top: 16px;
-      flex-wrap: wrap;
-    }
+  .header{
+    margin-bottom:8px;
+    opacity:0;
+    animation:riseIn .7s ease forwards;
+  }
+  .header h1{
+    font-size:clamp(2.1rem, 6vw, 3rem);
+    font-weight:200;
+    letter-spacing:-0.03em;
+    margin-bottom:10px;
+  }
+  .header .role{
+    font-size:1.02rem;
+    color:var(--muted);
+    font-weight:300;
+    letter-spacing:.01em;
+  }
 
-    .contact-info a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.95rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s ease;
-    }
+  .contact-info{
+    display:flex;
+    gap:22px;
+    margin-top:22px;
+    flex-wrap:wrap;
+    opacity:0;
+    animation:riseIn .7s ease forwards;
+    animation-delay:.12s;
+  }
+  .contact-info a{
+    color:var(--muted);
+    text-decoration:none;
+    font-size:.92rem;
+    font-weight:400;
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    position:relative;
+    padding-bottom:3px;
+    transition:color .25s ease;
+  }
+  .contact-info a svg{ width:14px; height:14px; stroke:currentColor; transition:stroke .25s ease; }
+  .contact-info a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:0; height:1px;
+    background:var(--accent);
+    transition:width .3s ease;
+  }
+  .contact-info a:hover{ color:var(--accent); }
+  .contact-info a:hover::after{ width:100%; }
 
-    .contact-info a:hover {
-      color: var(--accent);
-    }
+  .divider{
+    height:1px;
+    background:var(--border);
+    margin:38px 0;
+    transition:background-color .45s ease;
+  }
 
-    .section {
-      margin-bottom: 35px;
-    }
+  .reveal{
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
 
-    .section h2 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
+  .section{ margin-bottom:6px; }
 
-    .section p {
-      color: var(--text-muted);
-    }
+  .eyebrow{
+    font-size:.74rem;
+    font-weight:600;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:18px;
+    position:relative;
+    display:inline-block;
+  }
+  .eyebrow::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:-8px;
+    width:0;
+    height:1px;
+    background:var(--accent);
+    transition:width .6s ease .1s;
+  }
+  .reveal.in-view .eyebrow::after{ width:26px; }
 
-    .edu-item, .exp-item, .project-item {
-      margin-bottom: 20px;
-    }
+  .section > p{ color:var(--muted); font-size:.97rem; }
 
-    .item-title {
-      font-weight: 600;
-      font-size: 1.05rem;
-    }
+  .edu-item, .exp-item, .project-item{ margin-bottom:22px; }
+  .item-title{ font-weight:500; font-size:1.02rem; letter-spacing:-0.005em; }
+  .item-subtitle{ color:var(--muted); font-size:.88rem; font-weight:300; margin-top:2px; }
 
-    .item-subtitle {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
+  .research-card{
+    border-left:1px solid var(--accent);
+    padding:4px 0 4px 20px;
+  }
+  .research-card .item-title{ margin-bottom:3px; }
+  .research-card p{ font-size:.95rem; color:var(--muted); margin:10px 0; }
+  .research-card ul{ list-style:none; }
+  .research-card li{
+    position:relative;
+    padding-left:14px;
+    margin-bottom:6px;
+    font-size:.9rem;
+    color:var(--muted);
+  }
+  .research-card li::before{
+    content:"–";
+    position:absolute; left:0; color:var(--accent);
+  }
 
-    .exp-trigger {
-      cursor: pointer;
-      position: relative;
-      padding-left: 24px;
-    }
+  .exp-trigger{
+    cursor:pointer;
+    position:relative;
+    padding-left:22px;
+    user-select:none;
+  }
+  .toggle-icon{
+    position:absolute;
+    left:0; top:7px;
+    width:9px; height:9px;
+    stroke:var(--muted);
+    transition:transform .3s ease, stroke .3s ease;
+  }
+  .exp-trigger:hover .toggle-icon{ stroke:var(--accent); }
+  .toggle-icon.rotated{ transform:rotate(90deg); stroke:var(--accent); }
 
-    .toggle-icon {
-      position: absolute;
-      left: 0;
-      top: 6px;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      transition: transform 0.2s ease, color 0.2s ease;
-    }
+  .experience-details{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s cubic-bezier(0,1,0,1);
+    padding-left:22px;
+  }
+  .experience-details.open{
+    max-height:300px;
+    transition:max-height .4s cubic-bezier(1,0,1,0);
+    margin-top:10px;
+  }
+  .experience-details ul{ list-style:none; }
+  .experience-details li{
+    position:relative;
+    padding-left:14px;
+    margin-bottom:7px;
+    font-size:.9rem;
+    color:var(--muted);
+  }
+  .experience-details li::before{ content:"–"; position:absolute; left:0; color:var(--border); }
 
-    .exp-trigger:hover .toggle-icon {
-      color: var(--accent);
-    }
+  .project-item{
+    padding:12px 14px;
+    margin-left:-14px;
+    margin-right:-14px;
+    border-radius:8px;
+    border-left:1px solid transparent;
+    transition:background-color .3s ease, border-color .3s ease, transform .3s ease;
+  }
+  .project-item:hover{
+    background:var(--accent-soft);
+    border-left:1px solid var(--accent);
+    transform:translateX(2px);
+  }
+  .project-item p{ font-size:.92rem; color:var(--muted); margin-top:4px; }
 
-    .toggle-icon.rotated {
-      transform: rotate(90deg);
-      color: var(--accent);
-    }
+  .skills-list{ display:flex; flex-wrap:wrap; gap:9px; list-style:none; }
+  .skills-list li{
+    border:1px solid var(--border);
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:.84rem;
+    font-weight:400;
+    color:var(--muted);
+    transition:border-color .25s ease, color .25s ease, transform .25s ease;
+  }
+  .skills-list li:hover{
+    border-color:var(--accent);
+    color:var(--text);
+    transform:translateY(-2px);
+  }
 
-    .experience-details {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
-      padding-left: 24px;
-    }
+  @keyframes riseIn{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
 
-    .experience-details.open {
-      max-height: 500px;
-      transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
-      margin-top: 8px;
-    }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{ animation-duration:.001s !important; transition-duration:.001s !important; }
+  }
 
-    .experience-details ul {
-      list-style-type: none;
-    }
-
-    .experience-details li {
-      position: relative;
-      padding-left: 15px;
-      margin-bottom: 6px;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    .experience-details li::before {
-      content: "—";
-      position: absolute;
-      left: 0;
-      color: var(--border);
-    }
-
-    .research-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      padding: 16px;
-      border-radius: 0 8px 8px 0;
-    }
-
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      list-style: none;
-    }
-
-    .skills-list li {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .skills-list li i {
-      color: var(--accent);
-    }
-  </style>
+  @media (max-width:480px){
+    .container{ padding:80px 18px 80px; }
+    .theme-toggle{ top:16px; right:16px; }
+  }
+</style>
 </head>
 <body>
 
-  <div class="container">
-    
-    <div class="header">
-      <h1>Taha Abbaszadeh</h1>
-      <p>Computer Engineering Student & AI/ML Researcher</p>
-      <div class="contact-info">
-        <a href="mailto:tahaabszdeh@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-        <a href="https://www.linkedin.com/in/taha-abbaszadeh-951147360/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://github.com/TahaAbszd" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>About Me</h2>
-      <p>I am a fourth-year Computer Engineering student at Hormozgan University, passionate about AI and ML research, especially in healthcare applications. I have experience as a teaching assistant, enhancing my technical expertise while guiding others in their learning.</p>
-    </div>
-
-<!-- CURRENT RESEARCH WORK -->
-<div class="section">
-  <h2>Current Research Work</h2>
-  <div class="research-card">
-    <div class="item-title" style="color: var(--text); margin-bottom: 4px;">Deep Learning for Brain Tumor Detection & 3D Segmentation</div>
-    <div class="item-subtitle" style="margin-bottom: 8px;">Advisor: Dr. Shahram Golzari | Active Research (2026)</div>
-    <p style="font-size: 0.95rem; margin-bottom: 8px;">
-      Investigating state-of-the-art deep learning architectures for high-precision automated detection and semantic segmentation of brain tumors (gliomas) using multi-modal MRI scans.
-    </p>
-    <ul style="list-style-type: none; padding-left: 0; font-size: 0.9rem; color: var(--text-muted);">
-      <li><span style="color: var(--accent);">—</span> Benchmarking advanced encoder-decoder networks (e.g., U-Net variants, Vision Transformers) on benchmark datasets.</li>
-      <li><span style="color: var(--accent);">—</span> Focusing on handling class imbalance in small, irregular tumor boundaries and sub-regions (enhancing core, edema, and enhancing tumor).</li>
-    </ul>
-  </div>
+<div class="theme-toggle" id="themeToggle" role="button" tabindex="0" aria-label="Toggle dark mode">
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="4" y1="12" x2="1.5" y2="12"/><line x1="22.5" y1="12" x2="20" y2="12"/><line x1="5.6" y1="5.6" x2="3.9" y2="3.9"/><line x1="20.1" y1="20.1" x2="18.4" y2="18.4"/><line x1="5.6" y1="18.4" x2="3.9" y2="20.1"/><line x1="20.1" y1="3.9" x2="18.4" y2="5.6"/></svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
 </div>
 
-    <div class="section">
-      <h2>Education</h2>
-      <div class="edu-item">
-        <div class="item-title">B.Sc. in Computer Engineering</div>
-        <div class="item-subtitle">Hormozgan University, Bandar Abbas, Iran — 2023 - Present</div>
-      </div>
-    </div>
+<div class="container">
 
-    <div class="section">
-      <h2>Teaching Assistant Experience</h2>
-      
-      <div class="exp-item">
-        <div class="exp-trigger">
-          <i class="fas fa-chevron-right toggle-icon"></i>
-          <div class="item-title">Data Structures and Algorithms</div>
-          <div class="item-subtitle">Instructors: Dr. Shahram Golzari & Eng. Parisa Zarei | Feb 2025 - Present</div>
-        </div>
-        <div class="experience-details">
-          <ul>
-            <li>Designed and graded algorithmic exercises.</li>
-            <li>Helped students with problem-solving sessions.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-trigger">
-          <i class="fas fa-chevron-right toggle-icon"></i>
-          <div class="item-title">Discrete Mathematics</div>
-          <div class="item-subtitle">Instructor: Dr. Mahmoud Reza Saybani | Feb 2025 - Present</div>
-        </div>
-        <div class="experience-details">
-          <ul>
-            <li>Prepared and evaluated assignments on logic and set theory.</li>
-            <li>Conducted weekly Q&A sessions.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>Personal Projects</h2>
-
-      <div class="project-item">
-        <div class="item-title">4-Stage Dementia Classification</div>
-        <p style="font-size: 0.95rem;">Designed and evaluated a custom multi-layer Convolutional Neural Network (CNN) to classify neuroimaging data (MRI) into 4 distinct stages of Alzheimer's/Dementia, optimizing accuracy through advanced regularization techniques.</p>
-      </div>
-
-      <div class="project-item">
-        <div class="item-title">Real Estate Price Prediction (Divar Dataset)</div>
-        <p style="font-size: 0.95rem;">Built an end-to-end regression pipeline to scrape, clean, and analyze real estate market data from the Divar platform. Implemented and benchmarked various ML algorithms (e.g., XGBoost, Random Forests) to forecast property values based on engineered spatial and structural features.</p>
-      </div>
-
-      <div class="project-item">
-        <div class="item-title">Amazon Reviews Sentiment Analysis</div>
-        <p style="font-size: 0.95rem;">Developed an NLP pipeline for sentiment detection on large-scale Amazon text reviews. Leveraged modern text preprocessing, tokenization schemes, and deep sequence models (or Transformers) to classify customer attitudes with high semantic precision.</p>
-      </div>
-
-      <div class="project-item">
-        <div class="item-title">Persian Traffic Sign Detection (PTSD Dataset)</div>
-        <p style="font-size: 0.95rem;">Implemented Deep Neural Networks for robust traffic sign classification using the Persian Traffic Sign Dataset. Designed a custom Computer Vision preprocessing pipeline incorporating contrast enhancement (e.g., CLAHE) and image restoration algorithms to mitigate real-world environmental noise.</p>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>Skills</h2>
-      <ul class="skills-list">
-        <li><i class="fab fa-python"></i> Python</li>
-        <li><i class="fas fa-fire"></i> PyTorch</li>
-        <li><i class="fas fa-brain"></i> Keras</li>
-        <li><i class="fas fa-table"></i> Pandas</li>
-        <li><i class="fas fa-calculator"></i> NumPy</li>
-        <li><i class="fas fa-plug"></i> FastAPI</li>
-        <li><i class="fab fa-docker"></i> Docker</li>
-        <li><i class="fas fa-file-alt"></i> LaTeX</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>Languages</h2>
-      <p style="color: var(--text); font-size: 0.95rem;">
-        <strong>English</strong> (Fluent) &nbsp;&middot;&nbsp; <strong>Persian</strong> (Native)
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>Interests</h2>
-      <p>Artificial Intelligence in Healthcare, Machine Learning, Research and Development</p>
-    </div>
-
+  <div class="header">
+    <h1>Taha Abbaszadeh</h1>
+    <div class="role">Computer Engineering Student &amp; AI/ML Researcher</div>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const triggers = document.querySelectorAll(".exp-trigger");
+  <div class="contact-info">
+    <a href="mailto:tahaabszdeh@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+      Email
+    </a>
+    <a href="https://www.linkedin.com/in/taha-abbaszadeh-951147360/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"/><line x1="7.5" y1="10.5" x2="7.5" y2="16.5"/><circle cx="7.5" cy="7.2" r="0.4" fill="currentColor"/><path d="M12 16.5v-3.7c0-1.5 1-2.4 2.3-2.4 1.3 0 2.2.9 2.2 2.4v3.7"/><line x1="12" y1="10.5" x2="12" y2="16.5"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://github.com/TahaAbszd" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c-5.2 0-9.5 4.2-9.5 9.5 0 4.2 2.7 7.8 6.6 9.1.5.1.6-.2.6-.5v-1.8c-2.7.6-3.3-1.2-3.3-1.2-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 3 .8.1-.6.3-1.1.6-1.3-2.2-.2-4.5-1.1-4.5-4.8 0-1.1.4-1.9 1-2.6-.1-.2-.4-1.2.1-2.6 0 0 .8-.3 2.7 1 .8-.2 1.6-.3 2.4-.3.8 0 1.6.1 2.4.3 1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.6.6.7 1 1.5 1 2.6 0 3.7-2.3 4.6-4.5 4.8.4.3.7 1 .7 2v3c0 .3.1.6.6.5 3.9-1.3 6.6-4.9 6.6-9.1 0-5.3-4.3-9.5-9.5-9.5Z"/></svg>
+      GitHub
+    </a>
+  </div>
 
-      triggers.forEach(trigger => {
-        trigger.addEventListener("click", () => {
-          const item = trigger.parentElement;
-          const details = item.querySelector(".experience-details");
-          const icon = trigger.querySelector(".toggle-icon");
-          const isOpen = details.classList.contains("open");
+  <div class="divider"></div>
 
-          document.querySelectorAll(".experience-details").forEach(d => d.classList.remove("open"));
-          document.querySelectorAll(".toggle-icon").forEach(i => i.classList.remove("rotated"));
+  <div class="section reveal">
+    <div class="eyebrow">About</div>
+    <p>I am a fourth-year Computer Engineering student at Hormozgan University, passionate about AI and ML research, especially in healthcare applications. I have experience as a teaching assistant, enhancing my technical expertise while guiding others in their learning.</p>
+  </div>
 
-          if (!isOpen) {
-            details.classList.add("open");
-            icon.classList.add("rotated");
-          }
-        });
-      });
+  <div class="divider"></div>
 
-      document.querySelectorAll(".experience-details").forEach(detail => {
-        detail.addEventListener("click", (e) => {
-          e.stopPropagation();
-        });
+  <div class="section reveal">
+    <div class="eyebrow">Current Research</div>
+    <div class="research-card">
+      <div class="item-title">Deep Learning for Brain Tumor Detection &amp; 3D Segmentation</div>
+      <div class="item-subtitle">Advisor: Dr. Shahram Golzari · Active Research, 2026</div>
+      <p>Investigating state-of-the-art deep learning architectures for high-precision automated detection and semantic segmentation of brain tumors (gliomas) using multi-modal MRI scans.</p>
+      <ul>
+        <li>Benchmarking advanced encoder–decoder networks (U-Net variants, Vision Transformers) on benchmark datasets.</li>
+        <li>Focusing on class imbalance in small, irregular tumor boundaries and sub-regions (enhancing core, edema, enhancing tumor).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section reveal">
+    <div class="eyebrow">Education</div>
+    <div class="edu-item">
+      <div class="item-title">B.Sc. in Computer Engineering</div>
+      <div class="item-subtitle">Hormozgan University, Bandar Abbas, Iran — 2023 – Present</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section reveal">
+    <div class="eyebrow">Teaching Assistant Experience</div>
+
+    <div class="exp-item">
+      <div class="exp-trigger">
+        <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        <div class="item-title">Data Structures and Algorithms</div>
+        <div class="item-subtitle">Instructors: Dr. Shahram Golzari &amp; Eng. Parisa Zarei · Feb 2025 – Present</div>
+      </div>
+      <div class="experience-details">
+        <ul>
+          <li>Designed and graded algorithmic exercises.</li>
+          <li>Helped students with problem-solving sessions.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-trigger">
+        <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        <div class="item-title">Discrete Mathematics</div>
+        <div class="item-subtitle">Instructor: Dr. Mahmoud Reza Saybani · Feb 2025 – Present</div>
+      </div>
+      <div class="experience-details">
+        <ul>
+          <li>Prepared and evaluated assignments on logic and set theory.</li>
+          <li>Conducted weekly Q&amp;A sessions.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section reveal">
+    <div class="eyebrow">Personal Projects</div>
+
+    <div class="project-item">
+      <div class="item-title">4-Stage Dementia Classification</div>
+      <p>Designed and evaluated a custom multi-layer CNN to classify neuroimaging data (MRI) into four distinct stages of Alzheimer's/Dementia, optimizing accuracy through advanced regularization techniques.</p>
+    </div>
+
+    <div class="project-item">
+      <div class="item-title">Real Estate Price Prediction (Divar Dataset)</div>
+      <p>Built an end-to-end regression pipeline to scrape, clean, and analyze real estate market data from the Divar platform. Benchmarked XGBoost and Random Forests to forecast property values from engineered spatial and structural features.</p>
+    </div>
+
+    <div class="project-item">
+      <div class="item-title">Amazon Reviews Sentiment Analysis</div>
+      <p>Developed an NLP pipeline for sentiment detection on large-scale Amazon text reviews, using modern preprocessing, tokenization, and deep sequence models to classify customer attitudes with high semantic precision.</p>
+    </div>
+
+    <div class="project-item">
+      <div class="item-title">Persian Traffic Sign Detection (PTSD Dataset)</div>
+      <p>Implemented deep neural networks for robust traffic sign classification, with a custom computer vision pipeline incorporating CLAHE contrast enhancement and restoration algorithms to mitigate real-world noise.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section reveal">
+    <div class="eyebrow">Skills</div>
+    <ul class="skills-list">
+      <li>Python</li>
+      <li>PyTorch</li>
+      <li>Keras</li>
+      <li>Pandas</li>
+      <li>NumPy</li>
+      <li>FastAPI</li>
+      <li>Docker</li>
+      <li>LaTeX</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section reveal">
+    <div class="eyebrow">Languages</div>
+    <p><strong style="color:var(--text); font-weight:500;">English</strong> — Fluent &nbsp;·&nbsp; <strong style="color:var(--text); font-weight:500;">Persian</strong> — Native</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section reveal">
+    <div class="eyebrow">Interests</div>
+    <p>Artificial Intelligence in Healthcare, Machine Learning, Research &amp; Development</p>
+  </div>
+
+</div>
+
+<script>
+  const root = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+
+  function flipTheme(){
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+  }
+  toggle.addEventListener('click', flipTheme);
+  toggle.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); flipTheme(); }
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const scan = document.createElement('div');
+    scan.className = 'scanline';
+    document.body.appendChild(scan);
+    scan.addEventListener('animationend', () => scan.remove());
+
+    document.querySelectorAll('.exp-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.parentElement;
+        const details = item.querySelector('.experience-details');
+        const icon = trigger.querySelector('.toggle-icon');
+        const isOpen = details.classList.contains('open');
+
+        document.querySelectorAll('.experience-details').forEach(d => d.classList.remove('open'));
+        document.querySelectorAll('.toggle-icon').forEach(i => i.classList.remove('rotated'));
+
+        if(!isOpen){
+          details.classList.add('open');
+          icon.classList.add('rotated');
+        }
       });
     });
-  </script>
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => observer.observe(el));
+  });
+</script>
+
 </body>
 </html>
