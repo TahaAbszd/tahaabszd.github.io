@@ -91,7 +91,7 @@
       color: var(--text-muted);
     }
 
-    .edu-item, .exp-item {
+    .edu-item, .exp-item, .project-item {
       margin-bottom: 20px;
     }
 
@@ -113,7 +113,7 @@
 
     .toggle-icon {
       position: absolute;
-      left: 2;
+      left: 0;
       top: 6px;
       font-size: 0.8rem;
       color: var(--text-muted);
@@ -161,7 +161,14 @@
       color: var(--border);
     }
 
-    /* Skills Grid */
+    .research-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 16px;
+      border-radius: 0 8px 8px 0;
+    }
+
     .skills-list {
       display: flex;
       flex-wrap: wrap;
@@ -206,6 +213,15 @@
     </div>
 
     <div class="section">
+      <h2>Current Research Work</h2>
+      <div class="research-card">
+        <div class="item-title" style="color: var(--text); margin-bottom: 4px;">Brain Tumor Detection & Segmentation</div>
+        <div class="item-subtitle" style="margin-bottom: 8px;">Advisor: Dr. Shahram Golzari | Active Research</div>
+        <p style="font-size: 0.95rem;">Currently focusing on deep learning architectures applied to medical imaging for automated detection and high-precision segmentation of brain tumors.</p>
+      </div>
+    </div>
+
+    <div class="section">
       <h2>Education</h2>
       <div class="edu-item">
         <div class="item-title">B.Sc. in Computer Engineering</div>
@@ -220,14 +236,12 @@
         <div class="exp-trigger">
           <i class="fas fa-chevron-right toggle-icon"></i>
           <div class="item-title">Data Structures and Algorithms</div>
-          <div class="item-subtitle">Instructors: Dr. Shahram Golzari  | Feb 2025 - Present</div>
+          <div class="item-subtitle">Instructors: Dr. Shahram Golzari & Eng. Parisa Zarei | Feb 2025 - Present</div>
         </div>
         <div class="experience-details">
           <ul>
             <li>Designed and graded algorithmic exercises.</li>
             <li>Helped students with problem-solving sessions.</li>
-            <li>Instruct Practical and Theorical calasses.</li>
-
           </ul>
         </div>
       </div>
@@ -244,6 +258,30 @@
             <li>Conducted weekly Q&A sessions.</li>
           </ul>
         </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Personal Projects</h2>
+
+      <div class="project-item">
+        <div class="item-title">4-Stage Dementia Classification</div>
+        <p style="font-size: 0.95rem;">Developed a multi-layer Convolutional Neural Network (CNN) to detect and accurately classify cognitive impairment across four distinct stages of dementia using neuroimaging datasets.</p>
+      </div>
+
+      <div class="project-item">
+        <div class="item-title">Real Estate Price Prediction (Divar Dataset)</div>
+        <p style="font-size: 0.95rem;">Extracted and analyzed real estate market records from the Divar application; engineered features and trained robust Machine Learning regression models to forecast property pricing trends.</p>
+      </div>
+
+      <div class="project-item">
+        <div class="item-title">Amazon Reviews Sentiment Analysis</div>
+        <p style="font-size: 0.95rem;">Built an end-to-end Natural Language Processing (NLP) pipeline utilizing text preprocessing, tokenization, and embedding models to handle sentiment detection and classification on customer review text.</p>
+      </div>
+
+      <div class="project-item">
+        <div class="item-title">Persian Traffic Sign Detection (PTSD Dataset)</div>
+        <p style="font-size: 0.95rem;">Implemented Deep Neural Networks for classifying traffic signs on a localized Persian dataset. Integrated advanced Computer Vision algorithms for image preprocessing, contrast enhancement, and restoration to achieve high test accuracy.</p>
       </div>
     </div>
 
